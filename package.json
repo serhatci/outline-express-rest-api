@@ -21,6 +21,15 @@
     "Express",
     "Rest API"
   ],
+  "lint-staged": {
+    "*.js": [
+      "pretty-quick --staged",
+      "eslint --fix"
+    ],
+    "*.+(json|css|md)": [
+      "pretty-quick --staged"
+    ]
+  },
   "author": "Serhat Ciftci",
   "license": "SEE LICENCE IN LICENCE",
   "devDependencies": {
