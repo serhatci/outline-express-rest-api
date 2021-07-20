@@ -13,12 +13,7 @@ async function getRouteFiles(path) {
   return filesArr
 }
 
-view.display(`
-This package provides a short summary of your Express rest API.
-Before you start, please make sure that you saved & formatted all your route files.
-
-Click CTRL+C for exit
-    `)
+view.displayIntro()
 
 async function init() {
   try {
