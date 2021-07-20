@@ -13,9 +13,7 @@ module.exports = class View {
   constructor() {
     this.rl = readline.createInterface({
       input: process.stdin,
-      output: process.stdout,
     })
-    this.question = util.promisify(this.rl.question).bind(this.rl)
   }
 
   display(message) {
