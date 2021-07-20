@@ -1,13 +1,6 @@
 const fs = require('fs')
 
 module.exports = class FileManager {
-  checkPath(path) {
-    const result = fs.existsSync(path)
-    if (!result) {
-      const err = new Error('Directory does not exist!')
-      err.name = 'FileSysErr'
-      throw err
-    }
   }
 
   getJsFilesInFolder(path) {
