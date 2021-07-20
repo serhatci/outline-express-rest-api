@@ -30,6 +30,24 @@ module.exports = class View {
     console.log(View.red, `\n *** ${err} ***\n`, View.white)
   }
 
+  displayIntro() {
+    const intro = `
+This package provides a short summary of your Express rest API.
+Before you start, please make sure that you saved & formatted all your route files.
+
+Click CTRL+C for exit
+    `
+    this.display(intro)
+  }
+
+  displaySummary(summary) {
+    Object.entries(summary).forEach(([key, value]) => {
+      if (value.length > 0) {
+        value.forEach(item => this.display(`  ${key} --> ${item}`))
+      }
+    })
+  }
+
   async askRoutesFolder() {
     this.displayGreen('Provide your routes folder by editing below line:')
     this.rl.write(`${process.cwd()}/src/routes`)
