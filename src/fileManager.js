@@ -27,14 +27,4 @@ module.exports = class FileManager {
 
     return jsFiles
   }
-
-  readFileContent(path, file) {
-    const text = fs.readFileSync(`${path}/${file}`, 'utf-8')
-    if (!text.length) {
-      const err = new Error(`Reading content of ${file} was failed!`)
-      err.name = 'FileReadErr'
-      throw err
-    }
-    return text
-  }
 }
