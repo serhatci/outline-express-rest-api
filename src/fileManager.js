@@ -12,18 +12,10 @@ module.exports = class FileManager {
 
   getJsFilesInFolder(path) {
     const files = fs.readdirSync(path)
-    if (!files.length) {
-      const err = new Error('There is no file in the folder!')
-      err.name = 'FileSysErr'
-      throw err
-    }
+    if (!files.length) throw Error('There is no file in the folder!')
 
     const jsFiles = files.filter(file => /.js$/.test(file))
-    if (!jsFiles.length) {
-      const err = new Error('There is no *.js file in the folder!')
-      err.name = 'FileSysErr'
-      throw err
-    }
+    if (!jsFiles.length) throw Error('There is no *.js file in the folder!')
 
     return jsFiles
   }
