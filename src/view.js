@@ -10,6 +10,7 @@ module.exports = class View {
   static green = '\x1b[32m'
 
   static yellow = '\x1b[33m'
+
   constructor() {
     this.rl = readline.createInterface({
       input: process.stdin,
@@ -42,7 +43,7 @@ module.exports = class View {
 
   async askConfirmation(routeFiles) {
     this.displayGreen('\n\nFollowing route file(s) will be examined:')
-    this.display(`  ** [${routeFiles}]`)
+    this.display(`  ** ${routeFiles}`)
     this.display('\nClick any key to continue... (CTRL+C for Exit)')
 
     process.stdin.setRawMode(true)
