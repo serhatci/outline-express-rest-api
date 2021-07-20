@@ -15,8 +15,8 @@ async function init() {
     const routeFiles = await fileManager.getJsFilesInFolder(path)
     await view.askConfirmation(routeFiles)
 
-    for (const file of routeFiles) {
-      view.displayGreen(`\n--- ${file} ------------------------------------`)
+    for (const filePath of routeFilePaths) {
+      view.displayGreen(`\n--- ${filePath} --------------------------------`)
 
       const routeObj = require(`${path}/${file}`)
 
