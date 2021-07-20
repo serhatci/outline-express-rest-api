@@ -1,5 +1,9 @@
+/* eslint-disable global-require */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-dynamic-require */
 const View = require('./view')
 const FileManager = require('./fileManager')
+const TextManager = require('./textManager')
 
 const view = new View()
 const fileManager = new FileManager()
@@ -22,7 +26,6 @@ async function init() {
 
     const filesArr = await getRouteFiles(path)
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const file of filesArr) {
       view.displayGreen(`\n--- ${file} ------------------------------------`)
 
