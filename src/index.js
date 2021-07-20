@@ -34,8 +34,10 @@ async function init() {
       })
     }
 
-    view.endExecution()
+    view.stopExecution()
   } catch (err) {
+    view.displayError(err)
+    view.stopExecution()
     if (err.name === 'FileSysErr') {
       view.displayError(err.message)
       init()
