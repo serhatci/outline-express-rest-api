@@ -24,10 +24,12 @@ module.exports = class View {
     console.log(View.green, `${message}`, View.white)
   }
 
-  displayError(err) {
-    console.log(View.red, `\n *** ${err} ***\n`, View.white)
+  displayYellow(message) {
+    console.log(View.yellow, `${message}`, View.white)
   }
 
+  displayError(err) {
+    console.log(View.red, `\n *** ${err} ***\n`, View.white)
   }
 
   displaySummary(summary) {
