@@ -11,6 +11,7 @@ const textManager = new TextManager()
 
 async function init() {
   try {
+    const userInput = textManager.cleanInput(process.argv.slice(2)[0])
 
     const routeFiles = await fileManager.getJsFilesInFolder(path)
     await view.askConfirmation(routeFiles)
