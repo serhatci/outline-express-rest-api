@@ -9,14 +9,6 @@ const view = new View()
 const fileManager = new FileManager()
 const textManager = new TextManager()
 
-async function getRouteFiles(path) {
-  const filesArr = await fileManager.getJsFilesInFolder(path)
-  view.displayGreen('\n\nFollowing route file(s) will be examined:')
-  view.display(`  ** [${filesArr}]`)
-  await view.askForExecution()
-  return filesArr
-}
-
 view.displayIntro()
 
 async function init() {
@@ -24,9 +16,10 @@ async function init() {
     const path = await view.askRoutesFolder()
     fileManager.checkPath(path)
 
-    const filesArr = await getRouteFiles(path)
+    const routeFiles = await fileManager.getJsFilesInFolder(path)
+    await view.askConfirmation(routeFiles)
 
-    for (const file of filesArr) {
+    for (const file of routeFiles) {
       view.displayGreen(`\n--- ${file} ------------------------------------`)
 
       const routeObj = require(`${path}/${file}`)
