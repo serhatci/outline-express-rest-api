@@ -9,6 +9,7 @@ module.exports = class View {
 
   static green = '\x1b[32m'
 
+  static yellow = '\x1b[33m'
   constructor() {
     this.rl = readline.createInterface({
       input: process.stdin,
