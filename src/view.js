@@ -46,6 +46,8 @@ module.exports = class View {
     this.display(`  ** ${routeFiles}`)
     this.display('\nClick any key to continue... (CTRL+C for Exit)')
 
+    // taken from
+    // https://stackoverflow.com/questions/19687407/press-any-key-to-continue-in-nodejs
     process.stdin.setRawMode(true)
     return new Promise(resolve =>
       process.stdin.once('data', () => {
