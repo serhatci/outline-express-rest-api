@@ -28,7 +28,7 @@ async function init() {
 
         const summary = textManager.getSummary(routeFunc)
 
-        view.display(`${routeMethod.toUpperCase()} route to ${routePath}`)
+        view.displayYellow(`${routeMethod.toUpperCase()} route to ${routePath}`)
         view.displaySummary(summary)
         view.display('')
       })
