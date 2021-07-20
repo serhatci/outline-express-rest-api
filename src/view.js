@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 const readline = require('readline')
-const util = require('util')
 
 module.exports = class View {
   // terminal color references
