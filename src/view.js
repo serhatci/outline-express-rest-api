@@ -28,14 +28,6 @@ module.exports = class View {
     console.log(View.red, `\n *** ${err} ***\n`, View.white)
   }
 
-  displayIntro() {
-    const intro = `
-This package provides a short summary of your Express rest API.
-Before you start, please make sure that you saved & formatted all your route files.
-
-Click CTRL+C for exit
-    `
-    this.display(intro)
   }
 
   displaySummary(summary) {
