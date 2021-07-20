@@ -11,8 +11,6 @@ const textManager = new TextManager()
 
 async function init() {
   try {
-    const path = await view.askRoutesFolder()
-    fileManager.checkPath(path)
 
     const routeFiles = await fileManager.getJsFilesInFolder(path)
     await view.askConfirmation(routeFiles)
