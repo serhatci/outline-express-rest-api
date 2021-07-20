@@ -38,13 +38,6 @@ async function init() {
   } catch (err) {
     view.displayError(err)
     view.stopExecution()
-    if (err.name === 'FileSysErr') {
-      view.displayError(err.message)
-      init()
-    } else {
-      view.displayError(err)
-      view.endExecution()
-    }
   }
 }
 
