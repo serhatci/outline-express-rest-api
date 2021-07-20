@@ -36,4 +36,12 @@ module.exports = class TextManager {
 
     return summary
   }
+
+  cleanInput(inputText) {
+    if (!inputText) throw new Error('A filename or folder must be provided after outline command!')
+
+    if (/^\//.test(inputText)) return inputText.substring(1)
+
+    return inputText
+  }
 }
