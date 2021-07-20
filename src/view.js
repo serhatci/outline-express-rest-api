@@ -56,8 +56,11 @@ Click CTRL+C for exit
     return path
   }
 
-  async askForExecution() {
+  async askConfirmation(routeFiles) {
+    this.displayGreen('\n\nFollowing route file(s) will be examined:')
+    this.display(`  ** [${routeFiles}]`)
     this.display('\nClick any key to continue... (CTRL+C for Exit)')
+
     process.stdin.setRawMode(true)
     return new Promise(resolve =>
       process.stdin.once('data', () => {
