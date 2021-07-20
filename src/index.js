@@ -3,22 +3,7 @@ const FileManager = require('./fileManager')
 
 const view = new View()
 const fileManager = new FileManager()
-
-function summarizeErrorReturns(line) {
-  const errorValue = line.match(/(?<=next\().*?(?=\))/)
-  view.display(`         next() --> ${errorValue}`)
-}
-
-function summarizeReturnValues(line) {
-  const sentValue = line.match(/(?<=\.send\().*?(?=\))/)
-  view.display(`     may return --> ${sentValue}`)
-}
-
-function summarizeEndPoints(line) {
-  const httpRequestType = line.match(/[^router.]\w*/)
-  const endPoint = line.match(/(?<=\().*?(?=,)/)
-  view.display(`  \n${httpRequestType[0].toLocaleUpperCase()} route to ${endPoint}`)
-}
+const textManager = new TextManager()
 
 async function getRouteFiles(path) {
   const filesArr = await fileManager.getJsFilesInFolder(path)
@@ -46,21 +31,18 @@ async function init() {
     for (const file of filesArr) {
       view.displayGreen(`\n--- ${file} ------------------------------------`)
 
-      const fileText = fileManager.readFileContent(path, file)
-      const allLines = fileText.split(/\r\n|\n/)
+      const routeObj = require(`${path}/${file}`)
 
-      allLines.forEach(line => {
-        if (line.match(/^router./)) {
-          summarizeEndPoints(line)
-        }
+      routeObj.stack.forEach(endPoint => {
+        const routePath = endPoint.route.path
+        const routeMethod = endPoint.route.stack[0].method
+        const routeFunc = endPoint.route.stack[0].handle
 
-        if (line.match(/.send\(/)) {
-          summarizeReturnValues(line)
-        }
+        const summary = textManager.getSummary(routeFunc)
 
-        if (line.match(/next\(/)) {
-          summarizeErrorReturns(line)
-        }
+        view.display(`${routeMethod.toUpperCase()} route to ${routePath}`)
+        view.displaySummary(summary)
+        view.display('')
       })
     }
 
