@@ -40,14 +40,6 @@ module.exports = class View {
     })
   }
 
-  async askRoutesFolder() {
-    this.displayGreen('Provide your routes folder by editing below line:')
-    this.rl.write(`${process.cwd()}/src/routes`)
-
-    const path = await this.question('>')
-    return path
-  }
-
   async askConfirmation(routeFiles) {
     this.displayGreen('\n\nFollowing route file(s) will be examined:')
     this.display(`  ** [${routeFiles}]`)
