@@ -1,26 +1,28 @@
 module.exports = class TextManager {
-  methods = [
-    'append',
-    'attachment',
-    'cookie',
-    'clearCookie',
-    'download',
-    'end',
-    'format',
-    'get',
-    'json',
-    'jsonp',
-    'links',
-    'location',
-    'redirect',
-    'render',
-    'send',
-    'sendFile',
-    'sendStatus',
-    'set',
-    'type',
-    'vary',
-  ]
+  constructor() {
+    this.methods = [
+      'append',
+      'attachment',
+      'cookie',
+      'clearCookie',
+      'download',
+      'end',
+      'format',
+      'get',
+      'json',
+      'jsonp',
+      'links',
+      'location',
+      'redirect',
+      'render',
+      'send',
+      'sendFile',
+      'sendStatus',
+      'set',
+      'type',
+      'vary',
+    ]
+  }
 
   getSummary(routeFunc) {
     const funcText = routeFunc.toString()
@@ -40,8 +42,6 @@ module.exports = class TextManager {
   cleanInput(inputText) {
     if (!inputText) throw new Error('A filename or folder must be provided after outline command!')
 
-    if (/^\//.test(inputText)) return inputText.substring(1)
-
-    return inputText
+    return inputText.replace(new RegExp(/^\/*/), '')
   }
 }
