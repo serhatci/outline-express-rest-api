@@ -13,13 +13,13 @@ async function init() {
   try {
     const userInput = textManager.cleanInput(process.argv.slice(2)[0])
 
-    const routeFiles = await fileManager.getJsFilesInFolder(path)
-    await view.askConfirmation(routeFiles)
+    const routeFilePaths = await fileManager.getRouteFilePaths(userInput)
+    if (routeFilePaths.length > 1) await view.askConfirmation(routeFilePaths)
 
     for (const filePath of routeFilePaths) {
       view.displayGreen(`\n--- ${filePath} --------------------------------`)
 
-      const routeObj = require(`${path}/${file}`)
+      const routeObj = require(`${process.cwd()}/${filePath}`)
 
       routeObj.stack.forEach(endPoint => {
         const routePath = endPoint.route.path
