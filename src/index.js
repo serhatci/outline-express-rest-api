@@ -9,8 +9,6 @@ const view = new View()
 const fileManager = new FileManager()
 const textManager = new TextManager()
 
-view.displayIntro()
-
 async function init() {
   try {
     const path = await view.askRoutesFolder()
