@@ -1,9 +1,12 @@
+#! /usr/bin/env node
+
 /* eslint-disable global-require */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-dynamic-require */
-const View = require('./view')
-const FileManager = require('./file-manager')
-const TextManager = require('./text-manager')
+
+const View = require('../src/view')
+const FileManager = require('../src/file-manager')
+const TextManager = require('../src/text-manager')
 
 const view = new View()
 const fileManager = new FileManager()
