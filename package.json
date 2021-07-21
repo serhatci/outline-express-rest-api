@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "This package outlines our express rest API endpoints & returned values to your terminal",
   "main": "src/index.js",
+  "bin": {
+    "outline": "bin/index.js"
+  },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node bin/index.js",
     "test": "jest --testEnvironment=node --verbose  --forceExit --watchAll --maxWorkers=1",
     "test-coverage": " jest --collect-coverage --testEnvironment=node --forceExit --maxWorkers=1",
+    "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "lint": "lint-staged",
     "lint-only": "eslint .",
     "lint-all": "pretty-quick && eslint",
@@ -46,6 +50,7 @@
     "@babel/eslint-parser": "^7.14.5",
     "@prettier/plugin-pug": "^1.15.2",
     "babel-eslint": "^10.1.0",
+    "coveralls": "^3.1.1",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
