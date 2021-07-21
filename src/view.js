@@ -28,9 +28,7 @@ module.exports = class View {
 
   displaySummary(summary) {
     Object.entries(summary).forEach(([key, value]) => {
-      if (value.length > 0) {
-        value.forEach(item => this.display(`  ${key} --> ${item}`))
-      }
+      value.forEach(item => this.display(`  ${key} --> ${item}`))
     })
   }
 
