@@ -34,10 +34,8 @@ async function init() {
       })
     }
 
-    view.stopExecution()
   } catch (err) {
     view.displayError(err)
-    view.stopExecution()
   }
 }
 
