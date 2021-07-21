@@ -38,6 +38,10 @@
     "type": "git",
     "url": "https://github.com/serhatci/outline-express-rest-api"
   },
+  "bugs": {
+    "url": "https://github.com/serhatci/outline-express-rest-api/issues"
+  },
+  "homepage": "https://github.com/serhatci/outline-express-rest-api#readme",
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.5",
     "@prettier/plugin-pug": "^1.15.2",
