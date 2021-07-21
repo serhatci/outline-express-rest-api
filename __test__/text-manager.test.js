@@ -77,4 +77,10 @@ describe('Testing TestManager class in test-manager.js', () => {
       { routeMethod: 'post', routePath: '/:userId', summary: { send: ["{ message: 'ok' }"] } },
     ])
   })
+
+  it('getFilename() should provide js filename extracted from a path', () => {
+    expect(textManager.getFilename('/src/index.js')).toEqual('index.js')
+    expect(textManager.getFilename('/src/index')).toEqual('')
+    expect(textManager.getFilename('/src/in.py')).toEqual('')
+  })
 })
