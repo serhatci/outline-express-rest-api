@@ -96,7 +96,8 @@ describe('Testing View class in view.js', () => {
   it('displayTestedFiles() should display Files', () => {
     console.log = jest.fn()
     view.displayTestedFiles(['file1', 'file2'])
-    expect(console.log).toHaveBeenCalledTimes(2)
-    expect(console.log).toHaveBeenCalledWith('  ** file1,file2')
+    expect(console.log).toHaveBeenCalledTimes(3)
+    expect(console.log).toHaveBeenCalledWith('  ** file1')
+    expect(console.log).toHaveBeenCalledWith('  ** file2')
   })
 })
