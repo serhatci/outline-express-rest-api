@@ -32,8 +32,8 @@ module.exports = class View {
     })
   }
 
-  displayResults(results, filePath) {
-    this.displayGreen(`\n--- ${filePath} --------------------------------`)
+  displayResults(results, filename) {
+    this.displayGreen(`\n--- ${filename} --------------------------------`)
 
     results.forEach(endPoint => {
       this.displayYellow(`${endPoint.routeMethod.toUpperCase()} route to ${endPoint.routePath}`)
@@ -44,6 +44,6 @@ module.exports = class View {
 
   async displayTestedFiles(routeFiles) {
     this.displayGreen('\n\nFollowing route file(s) will be examined:')
-    this.display(`  ** ${routeFiles}`)
+    routeFiles.forEach(file => this.display(`  ** ${file}`))
   }
 }
