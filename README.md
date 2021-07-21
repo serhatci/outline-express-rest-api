@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/serhatci/outline-express-rest-api.svg?branch=main)](https://travis-ci.com/serhatci/outline-express-rest-api)
 [![Coverage Status](https://coveralls.io/repos/github/serhatci/outline-express-rest-api/badge.svg?branch=main)](https://coveralls.io/github/serhatci/outline-express-rest-api?branch=main)
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github/serhatci/outline-express-rest-api)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/serhatci/outline-express-rest-api/blob/main/README.md)
 
 # Outline express rest API
 
@@ -33,7 +33,7 @@ npx outline sample-route-files
 
 # Example Output
 
-![alt text](https://github.com/serhatci/outline-express-rest-api/example-output/example-output.jpg)
+![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/example-output.jpg)
 
 # Future Work
 
