@@ -56,7 +56,7 @@ describe('Testing TestManager class in test-manager.js', () => {
     ['/folder', 'folder'],
     ['//folder', 'folder'],
     ['--folder', '--folder'],
-  ])('%p input is expected to be returned %p', (firstArg, expectedResult) => {
+  ])('cleanInput() %p input is expected to be returned %p', (firstArg, expectedResult) => {
     const result = textManager.cleanInput(firstArg)
     expect(result).toEqual(expectedResult)
   })
