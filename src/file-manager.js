@@ -19,4 +19,8 @@ module.exports = class FileManager {
 
     return jsFiles
   }
+
+  getFullPath(filePath) {
+    return `${process.cwd()}/${filePath}`
+  }
 }
