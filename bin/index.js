@@ -23,7 +23,9 @@ async function init() {
       const fullPath = fileManager.getFullPath(filePath)
       const routeObj = require(fullPath)
       const results = textManager.outlineRouteObj(routeObj)
-      view.displayResults(results, filePath)
+
+      const filename = textManager.getFilename(filePath)
+      view.displayResults(results, filename)
     })
   } catch (err) {
     view.displayError(err)
