@@ -32,7 +32,18 @@ module.exports = class View {
     })
   }
 
+  displayResults(results, filePath) {
+    this.displayGreen(`\n--- ${filePath} --------------------------------`)
+
+    results.forEach(endPoint => {
+      this.displayYellow(`${endPoint.routeMethod.toUpperCase()} route to ${endPoint.routePath}`)
+      this.displaySummary(endPoint.summary)
+      this.display('')
+    })
   }
 
+  async displayTestedFiles(routeFiles) {
+    this.displayGreen('\n\nFollowing route file(s) will be examined:')
+    this.display(`  ** ${routeFiles}`)
   }
 }
