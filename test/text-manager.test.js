@@ -60,4 +60,8 @@ describe('Testing TestManager class in test-manager.js', () => {
     const result = textManager.cleanInput(firstArg)
     expect(result).toEqual(expectedResult)
   })
+
+  it('cleanInput() should throw error for empty input', () => {
+    expect(() => textManager.cleanInput('')).toThrow(Error)
+  })
 })
