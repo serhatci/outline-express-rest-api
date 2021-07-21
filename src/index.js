@@ -14,29 +14,19 @@ async function init() {
     const userInput = textManager.cleanInput(process.argv.slice(2)[0])
 
     const routeFilePaths = await fileManager.getRouteFilePaths(userInput)
-    if (routeFilePaths.length > 1) await view.askConfirmation(routeFilePaths)
+    if (routeFilePaths.length > 1) await view.displayTestedFiles(routeFilePaths)
 
-    for (const filePath of routeFilePaths) {
-      view.displayGreen(`\n--- ${filePath} --------------------------------`)
-
-      const routeObj = require(`${process.cwd()}/${filePath}`)
-
-      routeObj.stack.forEach(endPoint => {
-        const routePath = endPoint.route.path
-        const routeMethod = endPoint.route.stack[0].method
-        const routeFunc = endPoint.route.stack[0].handle
-
-        const summary = textManager.getSummary(routeFunc)
-
-        view.displayYellow(`${routeMethod.toUpperCase()} route to ${routePath}`)
-        view.displaySummary(summary)
-        view.display('')
-      })
-    }
-
+    routeFilePaths.forEach(filePath => {
+      const fullPath = fileManager.getFullPath(filePath)
+      const routeObj = require(fullPath)
+      const results = textManager.outlineRouteObj(routeObj)
+      view.displayResults(results, filePath)
+    })
   } catch (err) {
     view.displayError(err)
   }
 }
 
 init()
+
+module.exports = init
