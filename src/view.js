@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const readline = require('readline')
 
 module.exports = class View {
   // terminal color references
@@ -10,12 +9,6 @@ module.exports = class View {
   static green = '\x1b[32m'
 
   static yellow = '\x1b[33m'
-
-  constructor() {
-    this.rl = readline.createInterface({
-      input: process.stdin,
-    })
-  }
 
   display(message) {
     console.log(`${message}`)
