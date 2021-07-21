@@ -4,7 +4,7 @@ module.exports = class FileManager {
   getRouteFilePaths(userInput) {
     if (!fs.existsSync(userInput)) throw Error(`${userInput} does not exist!`)
 
-    if (/\..*?$/.test(userInput)) return [userInput]
+    if (/\.js$/.test(userInput)) return [userInput]
 
     const jsFiles = this.getJsFilesInFolder(userInput)
     return jsFiles.map(file => `${userInput}/${file}`)
