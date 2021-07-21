@@ -1,7 +1,7 @@
 {
   "name": "outline-express-rest-api",
   "version": "1.0.0",
-  "description": "This package reads source code of express rest API files and summarize APi end points and returned values in the terminal",
+  "description": "This package outlines our express rest API endpoints & returned values to your terminal",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
