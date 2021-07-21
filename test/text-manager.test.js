@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const TextManager = require('../src/text-manager')
 
 describe('Testing TestManager class in test-manager.js', () => {
@@ -63,5 +62,19 @@ describe('Testing TestManager class in test-manager.js', () => {
 
   it('cleanInput() should throw error for empty input', () => {
     expect(() => textManager.cleanInput('')).toThrow(Error)
+  })
+
+  it('outlineRouteObj() should provide an outline', () => {
+    const routeObj = {}
+    const handle = "return res.status(400).send({ message: 'ok' })"
+    const method = 'post'
+    const stack = [{ method, handle }]
+    const route = { path: '/:userId', stack }
+    const endPoint = { route, stack }
+    routeObj.stack = [endPoint]
+
+    expect(textManager.outlineRouteObj(routeObj)).toEqual([
+      { routeMethod: 'post', routePath: '/:userId', summary: { send: ["{ message: 'ok' }"] } },
+    ])
   })
 })
