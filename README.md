@@ -31,6 +31,10 @@ npx outline sample-route-files
 
 ```
 
+# Example Output
+
+![alt text](https://github.com/serhatci/outline-express-rest-api/example-output/example-output.jpg)
+
 # Future Work
 
 Current version is still limited to fully outline express rest API. Only http methods & route end points & express application methods are summarized.
