@@ -31,7 +31,7 @@ npx outline sample-route-files
 
 ```
 
-# Example Output
+# Output Example
 
 ![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/example-output.jpg)
 
