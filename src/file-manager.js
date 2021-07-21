@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 module.exports = class FileManager {
-  async getRouteFilePaths(userInput) {
+  getRouteFilePaths(userInput) {
     if (!fs.existsSync(userInput)) throw Error(`${userInput} does not exist!`)
 
     if (/\..*?$/.test(userInput)) return [userInput]
