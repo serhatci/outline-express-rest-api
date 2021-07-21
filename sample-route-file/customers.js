@@ -1,11 +1,10 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express')
 
 const router = express.Router()
-
-const Customer = require('models/customer')
 
 router.post('/:customerId/requests', async (req, res, next) => {
   const { customerId } = req.params
