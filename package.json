@@ -19,7 +19,9 @@
   },
   "keywords": [
     "Express",
-    "Rest API"
+    "Rest API",
+    "Summarize",
+    "Outline"
   ],
   "lint-staged": {
     "*.js": [
