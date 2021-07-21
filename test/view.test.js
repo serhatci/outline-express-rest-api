@@ -1,5 +1,5 @@
+/* eslint-disable global-require */
 /* eslint-disable no-console */
-const readline = require('readline')
 const View = require('../src/view')
 
 describe('Testing View class in view.js', () => {
@@ -26,18 +26,13 @@ describe('Testing View class in view.js', () => {
     expect(view.displayYellow).toBeInstanceOf(Function)
     expect(view.displayError).toBeInstanceOf(Function)
     expect(view.displaySummary).toBeInstanceOf(Function)
-    expect(view.askConfirmation).toBeInstanceOf(Function)
-    expect(view.stopExecution).toBeInstanceOf(Function)
+    expect(view.displayTestedFiles).toBeInstanceOf(Function)
   })
   it('Class color properties should match with Terminal color references', () => {
     expect(View.white).toBe('\x1b[0m')
     expect(View.red).toBe('\x1b[31m')
     expect(View.green).toBe('\x1b[32m')
     expect(View.yellow).toBe('\x1b[33m')
-  })
-
-  it('Class should instantiate readline Interface', () => {
-    expect(view.rl).toBeInstanceOf(readline.Interface)
   })
 
   it('display() should log a message', () => {
@@ -81,16 +76,27 @@ describe('Testing View class in view.js', () => {
     expect(console.log).toHaveBeenCalledWith('  json --> ok')
   })
 
-  it('askConfirmation() should display routeFiles and wait for user click', () => {
+  it('displayResults() should display results', () => {
     console.log = jest.fn()
-    view.askConfirmation(['file1', 'file2'])
-    expect(console.log).toHaveBeenCalledTimes(3)
-    expect(console.log).toHaveBeenCalledWith('  ** file1,file2')
+    view.displayResults(
+      [{ routePath: 'src/route', routeMethod: 'Post', summary: { send: ['ok', 'ok'] } }],
+      'src/routes/user.js'
+    )
+    expect(console.log).toHaveBeenCalledTimes(5)
+    expect(console.log).toHaveBeenCalledWith('')
+    expect(console.log).toHaveBeenCalledWith('  send --> ok')
+    expect(console.log).toHaveBeenCalledWith('\x1b[33m', 'POST route to src/route', '\x1b[0m')
+    expect(console.log).toHaveBeenCalledWith(
+      '\x1b[32m',
+      '\n--- src/routes/user.js --------------------------------',
+      '\x1b[0m'
+    )
   })
 
-  it('stopExecution() should exit from terminal app', () => {
-    view.rl.close = jest.fn()
-    view.stopExecution()
-    expect(view.rl.close).toHaveBeenCalledTimes(1)
+  it('displayTestedFiles() should display Files', () => {
+    console.log = jest.fn()
+    view.displayTestedFiles(['file1', 'file2'])
+    expect(console.log).toHaveBeenCalledTimes(2)
+    expect(console.log).toHaveBeenCalledWith('  ** file1,file2')
   })
 })
