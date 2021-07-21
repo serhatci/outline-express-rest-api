@@ -59,4 +59,8 @@ module.exports = class TextManager {
     })
     return results
   }
+
+  getFilename(filePath) {
+    return filePath.match(/([^/]+)\.js$/)[0]
+  }
 }
