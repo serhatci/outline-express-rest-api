@@ -48,7 +48,5 @@ module.exports = class View {
     )
   }
 
-  stopExecution() {
-    this.rl.close()
   }
 }
