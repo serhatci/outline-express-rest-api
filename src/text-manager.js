@@ -64,4 +64,12 @@ module.exports = class TextManager {
     const filename = filePath.match(/([^/]+)\.js$/)
     return filename ? filename[0] : ''
   }
+
+  evaluateExtraFeature(input) {
+    if (!input) return false
+
+    if (input == '--methods') return true
+
+    throw Error(`You need to use --methods instead of ${input}!`)
+  }
 }
