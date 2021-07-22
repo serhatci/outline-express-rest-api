@@ -1,12 +1,12 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
-const View = require('../src/view')
+const Terminal = require('../src/terminal')
 
-describe('Testing View class in view.js', () => {
+describe('Testing Terminal class in view.js', () => {
   let view
 
   beforeEach(() => {
-    view = new View()
+    view = new Terminal()
   })
 
   afterEach(() => {
@@ -14,10 +14,10 @@ describe('Testing View class in view.js', () => {
   })
 
   it('Class should have specific properties', () => {
-    expect(View).toHaveProperty('white')
-    expect(View).toHaveProperty('green')
-    expect(View).toHaveProperty('red')
-    expect(View).toHaveProperty('yellow')
+    expect(Terminal).toHaveProperty('white')
+    expect(Terminal).toHaveProperty('green')
+    expect(Terminal).toHaveProperty('red')
+    expect(Terminal).toHaveProperty('yellow')
   })
 
   it('Class should have specific methods', () => {
@@ -29,10 +29,10 @@ describe('Testing View class in view.js', () => {
     expect(view.displayTestedFiles).toBeInstanceOf(Function)
   })
   it('Class color properties should match with Terminal color references', () => {
-    expect(View.white).toBe('\x1b[0m')
-    expect(View.red).toBe('\x1b[31m')
-    expect(View.green).toBe('\x1b[32m')
-    expect(View.yellow).toBe('\x1b[33m')
+    expect(Terminal.white).toBe('\x1b[0m')
+    expect(Terminal.red).toBe('\x1b[31m')
+    expect(Terminal.green).toBe('\x1b[32m')
+    expect(Terminal.yellow).toBe('\x1b[33m')
   })
 
   it('display() should log a message', () => {
