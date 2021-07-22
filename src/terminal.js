@@ -36,9 +36,13 @@ module.exports = class Terminal {
     this.displayGreen(`\n--- ${filename} --------------------------------`)
 
     results.forEach(endPoint => {
-      this.displayYellow(`${endPoint.routeMethod.toUpperCase()} route to ${endPoint.routePath}`)
-      this.displaySummary(endPoint.summary)
-      this.display('')
+      if (endPoint.summary) {
+        this.displayYellow(`${endPoint.routeMethod.toUpperCase()} route to ${endPoint.routePath}`)
+        this.displaySummary(endPoint.summary)
+        this.display('')
+      } else {
+        this.display(`${endPoint.routeMethod.toUpperCase()} --> ${endPoint.routePath}`)
+      }
     })
   }
 
