@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-module.exports = class View {
+module.exports = class Terminal {
   // terminal color references
   static white = '\x1b[0m'
 
@@ -15,15 +15,15 @@ module.exports = class View {
   }
 
   displayGreen(message) {
-    console.log(View.green, `${message}`, View.white)
+    console.log(Terminal.green, `${message}`, Terminal.white)
   }
 
   displayYellow(message) {
-    console.log(View.yellow, `${message}`, View.white)
+    console.log(Terminal.yellow, `${message}`, Terminal.white)
   }
 
   displayError(err) {
-    console.log(View.red, `\n *** ${err} ***\n`, View.white)
+    console.log(Terminal.red, `\n *** ${err} ***\n`, Terminal.white)
   }
 
   displaySummary(summary) {
