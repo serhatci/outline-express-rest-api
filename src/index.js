@@ -2,11 +2,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-dynamic-require */
 
-const View = require('./view')
+const Terminal = require('./terminal')
 const FileManager = require('./file-manager')
 const TextManager = require('./text-manager')
 
-const view = new View()
+const terminal = new Terminal()
 const fileManager = new FileManager()
 const textManager = new TextManager()
 
@@ -15,7 +15,7 @@ async function init() {
     const userInput = textManager.cleanInput(process.argv.slice(2)[0])
 
     const routeFilePaths = await fileManager.getRouteFilePaths(userInput)
-    if (routeFilePaths.length > 1) await view.displayTestedFiles(routeFilePaths)
+    if (routeFilePaths.length > 1) await terminal.displayTestedFiles(routeFilePaths)
 
     routeFilePaths.forEach(filePath => {
       const fullPath = fileManager.getFullPath(filePath)
@@ -23,10 +23,10 @@ async function init() {
       const results = textManager.outlineRouteObj(routeObj)
 
       const filename = textManager.getFilename(filePath)
-      view.displayResults(results, filename)
+      terminal.displayResults(results, filename)
     })
   } catch (err) {
-    view.displayError(err)
+    terminal.displayError(err)
   }
 }
 
