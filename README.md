@@ -4,7 +4,9 @@
 
 # Outline express rest API
 
-An npm library to summarize your express rest API endpoints and return values in your terminal
+An npm library to summarize your express rest API endpoints with HTTP methods in your terminal.
+
+The additional experimental feature can also help you outline the return values of each end point.
 
 # Installation
 
@@ -31,13 +33,27 @@ npx outline sample-route-files
 
 ```
 
-# Output Example
+If you want also to summarize possible return values of end points, add '--methods' at the end:
 
-![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/example-output.jpg)
+```bash
+npx outline sample-route-files --methods
+
+```
+
+# Output Examples
+
+Sample output
+![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/sample-output.jpg)
+
+Sample output with '--methods' feature
+
+![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/sample-output-with-methods.jpg)
 
 # Future Work
 
 Current version is still limited to fully outline express rest API. Only http methods & route end points & express application methods are summarized.
+
+Improving accuracy of the experimental feature will be the next task.
 
 Outlining of query strings & URL parameters will be included in the next version.
 
