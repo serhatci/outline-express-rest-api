@@ -73,9 +73,11 @@ describe('Testing TestManager class in test-manager.js', () => {
     const endPoint = { route, stack }
     routeObj.stack = [endPoint]
 
-    expect(textManager.outlineRouteObj(routeObj)).toEqual([
+    expect(textManager.outlineRouteObj(routeObj, true)).toEqual([
       { routeMethod: 'post', routePath: '/:userId', summary: { send: ["{ message: 'ok' }"] } },
     ])
+
+    expect(textManager.outlineRouteObj(routeObj, false)).toEqual([{ routeMethod: 'post', routePath: '/:userId' }])
   })
 
   it('getFilename() should provide js filename extracted from a path', () => {
@@ -83,6 +85,7 @@ describe('Testing TestManager class in test-manager.js', () => {
     expect(textManager.getFilename('/src/index')).toEqual('')
     expect(textManager.getFilename('/src/in.py')).toEqual('')
   })
+
   it('EvaluateExtraFeature() should return true, false or give error', () => {
     expect(textManager.evaluateExtraFeature('--methods')).toEqual(true)
     expect(textManager.evaluateExtraFeature('')).toEqual(false)
