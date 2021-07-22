@@ -40,7 +40,7 @@ module.exports = class TextManager {
   }
 
   cleanInput(inputText) {
-    if (!inputText) throw new Error('A filename or folder must be provided after outline command!')
+    if (!inputText) throw Error('A filename or folder must be provided after outline command!')
 
     return inputText.replace(new RegExp(/^\/*/), '')
   }
