@@ -76,21 +76,36 @@ describe('Testing Terminal class in view.js', () => {
     expect(console.log).toHaveBeenCalledWith('  json --> ok')
   })
 
-  it('displayResults() should display results', () => {
+  it('displayResults() with extraFeatures should display results with methods', () => {
     console.log = jest.fn()
-    view.displayResults(
-      [{ routePath: 'src/route', routeMethod: 'Post', summary: { send: ['ok', 'ok'] } }],
-      'src/routes/user.js'
-    )
+    const results = [{ routePath: 'src/route', routeMethod: 'Post', summary: { send: ['ok', 'ok'] } }]
+    const path = 'src/routes/user.js'
+
+    view.displayResults(results, path)
     expect(console.log).toHaveBeenCalledTimes(5)
-    expect(console.log).toHaveBeenCalledWith('')
-    expect(console.log).toHaveBeenCalledWith('  send --> ok')
-    expect(console.log).toHaveBeenCalledWith('\x1b[33m', 'POST route to src/route', '\x1b[0m')
     expect(console.log).toHaveBeenCalledWith(
       '\x1b[32m',
       '\n--- src/routes/user.js --------------------------------',
       '\x1b[0m'
     )
+    expect(console.log).toHaveBeenCalledWith('\x1b[33m', 'POST route to src/route', '\x1b[0m')
+    expect(console.log).toHaveBeenCalledWith('  send --> ok')
+    expect(console.log).toHaveBeenCalledWith('')
+  })
+
+  it('displayResults() without extraFeatures should display only endpoints $ methods', () => {
+    console.log = jest.fn()
+    const results = [{ routePath: 'src/route', routeMethod: 'Post' }]
+    const path = 'src/routes/user.js'
+
+    view.displayResults(results, path)
+    expect(console.log).toHaveBeenCalledTimes(2)
+    expect(console.log).toHaveBeenCalledWith(
+      '\x1b[32m',
+      '\n--- src/routes/user.js --------------------------------',
+      '\x1b[0m'
+    )
+    expect(console.log).toHaveBeenCalledWith('POST --> src/route')
   })
 
   it('displayTestedFiles() should display Files', () => {
