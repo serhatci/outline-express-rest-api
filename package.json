@@ -1,7 +1,7 @@
 {
   "name": "outline-express-rest-api",
   "version": "1.0.0",
-  "description": "This package outlines our express rest API endpoints & returned values to your terminal",
+  "description": "This package outlines express rest API endpoints & returned values to your terminal",
   "main": "src/index.js",
   "bin": {
     "outline": "bin/index.js"
