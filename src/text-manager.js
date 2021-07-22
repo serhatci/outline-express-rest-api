@@ -45,19 +45,19 @@ module.exports = class TextManager {
     return inputText.replace(new RegExp(/^\/*/), '')
   }
 
-  outlineRouteObj(routeObj) {
-    const results = []
-
-    routeObj.stack.forEach(endPoint => {
+  outlineRouteObj(routeObj, extraFeature) {
+    return routeObj.stack.map(endPoint => {
       const routeSummary = {}
       routeSummary.routePath = endPoint.route.path
       routeSummary.routeMethod = endPoint.route.stack[0].method
-      const routeFunc = endPoint.route.stack[0].handle
 
+      if (!extraFeature) return routeSummary
+
+      const routeFunc = endPoint.route.stack[0].handle
       routeSummary.summary = this.getSummary(routeFunc)
-      results.push(routeSummary)
+
+      return routeSummary
     })
-    return results
   }
 
   getFilename(filePath) {
