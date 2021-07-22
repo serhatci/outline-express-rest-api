@@ -83,4 +83,9 @@ describe('Testing TestManager class in test-manager.js', () => {
     expect(textManager.getFilename('/src/index')).toEqual('')
     expect(textManager.getFilename('/src/in.py')).toEqual('')
   })
+  it('EvaluateExtraFeature() should return true, false or give error', () => {
+    expect(textManager.evaluateExtraFeature('--methods')).toEqual(true)
+    expect(textManager.evaluateExtraFeature('')).toEqual(false)
+    expect(() => textManager.evaluateExtraFeature('anything except --methods')).toThrow(Error)
+  })
 })
