@@ -43,11 +43,11 @@ npx outline sample-route-files --methods
 # Output Examples
 
 Sample output
-![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/sample-output.jpg)
+![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/sample-outputs/sample-output.jpg)
 
 Sample output with '--methods' feature
 
-![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/example-output/sample-output-with-methods.jpg)
+![alt text](https://github.com/serhatci/outline-express-rest-api/blob/main/sample-outputs/sample-output-with-methods.jpg)
 
 # Future Work
 
