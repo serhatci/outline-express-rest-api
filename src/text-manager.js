@@ -40,28 +40,36 @@ module.exports = class TextManager {
   }
 
   cleanInput(inputText) {
-    if (!inputText) throw new Error('A filename or folder must be provided after outline command!')
+    if (!inputText) throw Error('A filename or folder must be provided after outline command!')
 
     return inputText.replace(new RegExp(/^\/*/), '')
   }
 
-  outlineRouteObj(routeObj) {
-    const results = []
-
-    routeObj.stack.forEach(endPoint => {
+  outlineRouteObj(routeObj, extraFeature) {
+    return routeObj.stack.map(endPoint => {
       const routeSummary = {}
       routeSummary.routePath = endPoint.route.path
       routeSummary.routeMethod = endPoint.route.stack[0].method
-      const routeFunc = endPoint.route.stack[0].handle
 
+      if (!extraFeature) return routeSummary
+
+      const routeFunc = endPoint.route.stack[0].handle
       routeSummary.summary = this.getSummary(routeFunc)
-      results.push(routeSummary)
+
+      return routeSummary
     })
-    return results
   }
 
   getFilename(filePath) {
     const filename = filePath.match(/([^/]+)\.js$/)
     return filename ? filename[0] : ''
+  }
+
+  evaluateExtraFeature(input) {
+    if (!input) return false
+
+    if (input == '--methods') return true
+
+    throw Error(`You need to use --methods instead of ${input}!`)
   }
 }

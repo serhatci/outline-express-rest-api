@@ -1,12 +1,12 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
-const View = require('../src/view')
+const Terminal = require('../src/terminal')
 
-describe('Testing View class in view.js', () => {
+describe('Testing Terminal class in view.js', () => {
   let view
 
   beforeEach(() => {
-    view = new View()
+    view = new Terminal()
   })
 
   afterEach(() => {
@@ -14,10 +14,10 @@ describe('Testing View class in view.js', () => {
   })
 
   it('Class should have specific properties', () => {
-    expect(View).toHaveProperty('white')
-    expect(View).toHaveProperty('green')
-    expect(View).toHaveProperty('red')
-    expect(View).toHaveProperty('yellow')
+    expect(Terminal).toHaveProperty('white')
+    expect(Terminal).toHaveProperty('green')
+    expect(Terminal).toHaveProperty('red')
+    expect(Terminal).toHaveProperty('yellow')
   })
 
   it('Class should have specific methods', () => {
@@ -29,10 +29,10 @@ describe('Testing View class in view.js', () => {
     expect(view.displayTestedFiles).toBeInstanceOf(Function)
   })
   it('Class color properties should match with Terminal color references', () => {
-    expect(View.white).toBe('\x1b[0m')
-    expect(View.red).toBe('\x1b[31m')
-    expect(View.green).toBe('\x1b[32m')
-    expect(View.yellow).toBe('\x1b[33m')
+    expect(Terminal.white).toBe('\x1b[0m')
+    expect(Terminal.red).toBe('\x1b[31m')
+    expect(Terminal.green).toBe('\x1b[32m')
+    expect(Terminal.yellow).toBe('\x1b[33m')
   })
 
   it('display() should log a message', () => {
@@ -76,21 +76,36 @@ describe('Testing View class in view.js', () => {
     expect(console.log).toHaveBeenCalledWith('  json --> ok')
   })
 
-  it('displayResults() should display results', () => {
+  it('displayResults() with extraFeatures should display results with methods', () => {
     console.log = jest.fn()
-    view.displayResults(
-      [{ routePath: 'src/route', routeMethod: 'Post', summary: { send: ['ok', 'ok'] } }],
-      'src/routes/user.js'
-    )
+    const results = [{ routePath: 'src/route', routeMethod: 'Post', summary: { send: ['ok', 'ok'] } }]
+    const path = 'src/routes/user.js'
+
+    view.displayResults(results, path)
     expect(console.log).toHaveBeenCalledTimes(5)
-    expect(console.log).toHaveBeenCalledWith('')
-    expect(console.log).toHaveBeenCalledWith('  send --> ok')
-    expect(console.log).toHaveBeenCalledWith('\x1b[33m', 'POST route to src/route', '\x1b[0m')
     expect(console.log).toHaveBeenCalledWith(
       '\x1b[32m',
       '\n--- src/routes/user.js --------------------------------',
       '\x1b[0m'
     )
+    expect(console.log).toHaveBeenCalledWith('\x1b[33m', 'POST route to src/route', '\x1b[0m')
+    expect(console.log).toHaveBeenCalledWith('  send --> ok')
+    expect(console.log).toHaveBeenCalledWith('')
+  })
+
+  it('displayResults() without extraFeatures should display only endpoints $ methods', () => {
+    console.log = jest.fn()
+    const results = [{ routePath: 'src/route', routeMethod: 'Post' }]
+    const path = 'src/routes/user.js'
+
+    view.displayResults(results, path)
+    expect(console.log).toHaveBeenCalledTimes(2)
+    expect(console.log).toHaveBeenCalledWith(
+      '\x1b[32m',
+      '\n--- src/routes/user.js --------------------------------',
+      '\x1b[0m'
+    )
+    expect(console.log).toHaveBeenCalledWith('POST --> src/route')
   })
 
   it('displayTestedFiles() should display Files', () => {
